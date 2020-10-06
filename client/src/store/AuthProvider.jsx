@@ -7,7 +7,7 @@ export const AuthContext = createContext();
 function AuthProvider({ children }) {
   const [auth, setAuth] = useState({
     isAuthenticated: false,
-    // user: null,
+    user: null,
     token: null,
     loading: true,
   });
@@ -28,8 +28,9 @@ function AuthProvider({ children }) {
             return setAuth((previous) => ({
               ...previous,
               isAuthenticated: true,
-              token: localStorageToken,
+              // token: localStorageToken,
               loading: false,
+              // user: res.data,
             }));
           } else {
             return setAuth((previous) => ({ ...previous, loading: false }));

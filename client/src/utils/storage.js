@@ -15,14 +15,27 @@ export function getFromStorage(key) {
   }
 }
 
-export function setInStorage(key, obj) {
+export function setInStorage(key, value) {
   if (!key) {
-    console.error("Error: Key is missing");
+    // console.error("Error: Key is missing");
+    return null;
   }
   // encrypted jwt?
   try {
-    localStorage.setItem(key, JSON.stringify(obj));
+    localStorage.setItem(key, JSON.stringify(value));
   } catch (err) {
     console.log(err);
+  }
+}
+
+export function removeFromStorage(key) {
+  if (!key) {
+    return null;
+  }
+
+  try {
+    localStorage.removeItem(key);
+  } catch (err) {
+    return null;
   }
 }
