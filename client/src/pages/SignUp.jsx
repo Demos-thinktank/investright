@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 // import { AuthContext } from "../store/AuthProvider";
 import HomeTitle from "../components/HomeTitle";
@@ -14,7 +14,7 @@ const Wrapper = styled.section`
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding: 10% 0;
+  padding: 5% 0;
 `;
 
 const StyledForm = styled(Form)`
@@ -35,18 +35,11 @@ const StyledButton = styled(Button)`
 `;
 
 const Login = styled.p`
-  font-size: 0.8rem;
+  font-size: 1rem;
   padding: 0.5rem;
 `;
 
 const StyledLayer = styled(Layer)`
-  justify-content: center;
-  align-items: center;
-`;
-
-const StyledBox = styled(Box)`
-  width: 75%;
-  height: 75vh;
   justify-content: center;
   align-items: center;
 `;
@@ -252,7 +245,7 @@ const SignUp = () => {
           value={signUp.password}
           onChange={handleSignUpChange}
           required
-          // validate={passwordRulesStrong}
+          validate={passwordRulesStrong}
         >
           <TextInput
             name="password"
@@ -280,11 +273,20 @@ const SignUp = () => {
             <Text color="status-critical">{passwordError}</Text>
           </Box>
         )}
-        <br />
-        <StyledButton type="submit">Sign Up</StyledButton>
+        {/* <br /> */}
+        <StyledButton
+          primary
+          label="Sign Up"
+          size="large"
+          margin="medium"
+          type="submit"
+        />
       </StyledForm>
       <Login>
-        Already have an account? <Link to="/">Login</Link>
+        Already have an account?{" "}
+        <Link style={{ color: "#00739D" }} to="/">
+          Login
+        </Link>
       </Login>
       {show && (
         <StyledLayer animation="fadeIn" full={true} position="center">

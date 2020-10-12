@@ -6,7 +6,15 @@ const Layout = ({ children }) => {
   return (
     <Box height="100vh">
       <Nav />
-      <Box flex="grow">{children}</Box>
+      <Box
+        flex="grow"
+        margin="auto"
+        style={{ width: "100%" }}
+        width={{ max: "1024px" }}
+        pad="medium"
+      >
+        {children}
+      </Box>
     </Box>
   );
 };

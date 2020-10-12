@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Redirect } from "react-router-dom";
 import { AuthContext } from "../store/AuthProvider";
 import Login from "../components/Login";
@@ -11,20 +11,13 @@ const Wrapper = styled.section`
   /* justify-content: center; */
   align-items: center;
   min-height: 100vh;
-  padding: 10% 0;
+  padding: 5% 0;
 `;
 
 const Home = () => {
-  const [loggedIn, setLoggedIn] = useState(false);
   const { auth } = useContext(AuthContext);
 
   // console.log("authcontext", auth.isAuthenticated);
-
-  useEffect(() => {
-    if (auth && auth.isAuthenticated) {
-      setLoggedIn(true);
-    }
-  }, [loggedIn, auth]);
 
   const pageLoading = auth.loading && <div>loading...</div>;
   const homePage = (
@@ -41,12 +34,7 @@ const Home = () => {
   }
 
   if (!auth.loading && !auth.isAuthenticated) {
-    return (
-      <Wrapper>
-        {auth.loading ? pageLoading : homePage}
-        {/* {loggedIn && <Redirect to="/profile" />} */}
-      </Wrapper>
-    );
+    return <Wrapper>{auth.loading ? pageLoading : homePage}</Wrapper>;
   }
 
   if (auth.loading) {

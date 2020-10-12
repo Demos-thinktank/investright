@@ -19,13 +19,18 @@ const Profile = () => {
   // BE request for funds + conditional return
   return (
     <Layout>
-      <Box height="100%">
-        <Box align="center" justify="end" direction="row" pad="medium">
+      <Box width={{ min: "100%", max: "100%" }}>
+        <Box
+          // align="center"
+          justify="end"
+          direction="row"
+          margin={{ bottom: "medium" }}
+        >
           <Text as="h1" size="xlarge" margin="small">
             Add new funds
           </Text>
           <Link to="/add-new-funds">
-            <StyledIcon />
+            <StyledIcon color="demosOrange" />
           </Link>
         </Box>
         <Text as="h2" size="xxlarge" textAlign="center" margin="xsmall">

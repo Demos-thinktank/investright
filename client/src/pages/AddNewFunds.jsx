@@ -8,7 +8,7 @@ const fundButtonData = [
     label:
       "A pension organised by your current employer or any former employer",
     href: "/add-new-funds/current-employer",
-    iconText: "TBC",
+    // iconText: "TBC",
   },
   {
     label: "A personal pension",
@@ -19,47 +19,60 @@ const fundButtonData = [
   {
     label: "A self-invested personal pension (a ‘SIPP’)",
     href: "/add-new-funds/other-investment",
-    iconText: "TBC",
+    // iconText: "TBC",
   },
 ];
 
 const AddNewFunds = () => {
   return (
     <Layout>
-      <Text as="h1" size="xlarge" margin="medium">
+      {/* <Box
+        width={{ min: "320px", max: "1024px" }}
+        align="center"
+        fill="vertical"
+        style={{ margin: "auto" }}
+        pad={{ horizontal: "medium" }}
+      > */}
+      <Text
+        as="h1"
+        size="xlarge"
+        margin={{ vertical: "medium" }}
+        alignSelf="start"
+      >
         Add New Funds
       </Text>
-      <Text
-        as="h2"
-        size="xlarge"
-        // margin="small"
-        textAlign="center"
-        weight="normal"
-      >
+      <Text as="p" size="medium" margin={{ top: "small", bottom: "small" }}>
         Please select the type if investment you want to find out about{" "}
       </Text>
 
-      <Box align="center" justify="around" flex="grow">
+      <Box
+        align="center"
+        justify="between"
+        pad="medium"
+        flex="grow"
+        fill="horizontal"
+      >
         {fundButtonData.map((element, i) => (
           // <>
           <FundButton
             key={i}
             label={element.label}
             href={element.href}
-            iconText={element.iconText}
+            iconText={element.iconText ? element.iconText : ""}
           />
           // </>
         ))}
       </Box>
       <Text
         as="p"
-        size="xsmall"
+        size="small"
         textAlign="center"
-        margin={{ horizontal: "large", vertical: "small" }}
+        margin={{ vertical: "small" }}
       >
-        <Text size="small">*</Text>Do not worry: if you have more than one type
+        <Text size="medium">*</Text>Do not worry: if you have more than one type
         of investment there is an option to return to this page later
       </Text>
+      {/* </Box> */}
     </Layout>
   );
 };

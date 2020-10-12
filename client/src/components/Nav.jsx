@@ -1,17 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import {
-  Anchor,
-  Box,
-  Grommet,
-  Header,
-  Nav,
-  Menu,
-  ResponsiveContext,
-  Text,
-} from "grommet";
-import { Close, Menu as MenuIcon, User } from "grommet-icons";
+import { Box, Header, Nav, Menu, ResponsiveContext } from "grommet";
+import { Close, Menu as MenuIcon } from "grommet-icons";
 import Logout from "./Logout";
 
 const StyledTitle = styled(Link)`
@@ -21,7 +12,7 @@ const StyledTitle = styled(Link)`
   z-index: 30;
   color: whitesmoke !important;
   &:hover {
-    color: #81fced !important;
+    color: #ee7155 !important;
   }
 `;
 
@@ -32,7 +23,7 @@ const StyledLink = styled(Link)`
   /* z-index: 30; */
   color: whitesmoke !important;
   &:hover {
-    color: #81fced !important;
+    color: #ee7155 !important;
   }
 `;
 
@@ -40,7 +31,7 @@ const Navigation = () => {
   const [show, setShow] = useState(false);
 
   return (
-    <Header background="dark-1" pad="medium">
+    <Header background="#15343a" pad="medium">
       <Box direction="row" align="center" gap="small">
         <StyledTitle to="/profile">% Investright</StyledTitle>
       </Box>
@@ -54,9 +45,9 @@ const Navigation = () => {
                 // size="large"
                 // label=""
                 // icon={<MenuIcon />}
-                background="dark-1"
+                background="#15343a"
                 // dropTarget='{Header}'
-                dropBackground="dark-1"
+                dropBackground="#15343a"
                 // dropProps={{
                 //   align: { top: "top", left: "left" },
                 //   elevation: "xlarge",
@@ -121,8 +112,12 @@ const Navigation = () => {
                       justify="end"
                       gap="small"
                       // pad="medium"
-                      background={hover && drop ? "dark-1" : undefined}
-                      style={{ padding: drop ? "0 20px" : "" }}
+                      background={hover && drop ? "#15343a" : undefined}
+                      style={{
+                        padding: drop ? "0 20px" : "",
+                        backgroundColor: "#15343a",
+                        color: "#ee7155 !important",
+                      }}
                     >
                       {drop ? <Close /> : <MenuIcon />}
                     </Box>
@@ -138,6 +133,8 @@ const Navigation = () => {
                 <StyledLink to="#">How we calculate scores</StyledLink>
                 <StyledLink to="#">Contact us</StyledLink>
                 <StyledLink to="#">My actions</StyledLink>
+                <StyledLink to="#">Profile</StyledLink>
+                <StyledLink to="#">Logout</StyledLink>
               </Nav>
               {show && <Logout show={show} setShow={setShow} />}
             </>

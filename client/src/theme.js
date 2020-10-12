@@ -1,5 +1,3 @@
-import { Menu as MenuIcon, FormClose } from "grommet-icons";
-// import React from "react";
 export const theme = {
   global: {
     font: {
@@ -9,9 +7,16 @@ export const theme = {
     },
     // color: "inherit",
     colors: {
+      demosDark: "#1d3336",
+      demosOrange: "#ee7155",
+      demosTeal: "#85cdd1",
+      demosLemon: "#feebb3",
+      demosLight: "#e0f1f8",
+      demosLightGrey: "#bfc6cf",
+      demosDarkGrey: "#676c72",
       primary: "#333",
       good: "green",
-      brand: "333",
+      brand: "#333",
       "accent-1": "#6FFFB0",
       "accent-3": "#81FCED",
       "accent-4": "#FFCA58",
@@ -50,22 +55,82 @@ export const theme = {
     // font: {
     //   weight: undefined,
     // },
-    // hover: {
-    //   background: {
-    //     color: undefined,
+    // active: {
+    //   secondary: {
+    //     color: "#85ccd0",
+    //     background: "#15343a",
     //   },
-    //   color: "dark-1",
     // },
-    color: "inherit",
-    default: {
-      // active?
-      hover: {
-        color: "accent-3",
+    hover: {
+      primary: {
+        color: "demosDark",
+        background: "demosOrange",
+        border: {
+          color: "demosDark",
+          width: `2px`,
+          radius: "5px",
+        },
       },
+      secondary: {
+        color: "demosTeal",
+        background: "demosDark",
+      },
+      extend: (props) => {
+        let extraStyles = "";
+        if (props.alert) {
+          extraStyles += `
+          color: #1d3336;
+          background: #FF4040;
+          border: 2px solid #1d3336;
+          border-radius: 5px;
+          `;
+        }
+        return `
+            ${extraStyles}
+          `;
+      },
+    },
+    // color: "inherit",
+    default: {
       background: "transparent",
-      "background-color": "transparent",
       border: {
-        color: "dark-1",
+        color: "demosDark",
+        width: `2px`,
+        radius: "5px",
+      },
+      // padding: {
+      //   vertical: undefined,
+      //   horizontal: undefined,
+      // },
+      extend: (props) => {
+        let extraStyles = "";
+        if (props.alert) {
+          extraStyles += `
+          color: #1d3336;
+          background: #FF4040;
+          border: 2px solid #FF4040;
+          border-radius: 5px;
+          `;
+        }
+        return `
+            ${extraStyles}
+          `;
+      },
+    },
+    primary: {
+      color: "demosDark",
+      background: "demosOrange",
+      border: {
+        color: "demosOrange",
+        width: `2px`,
+        radius: "5px",
+      },
+    },
+    secondary: {
+      color: "demosDark",
+      background: "demosTeal",
+      border: {
+        color: "demosDark",
         width: `2px`,
         radius: "5px",
       },
@@ -81,8 +146,6 @@ export const theme = {
             `;
         }
         return `
-            // font-size: 12px;
-            // font-weight: bold;
             ${extraStyles}
           `;
       },
@@ -95,23 +158,3 @@ export const theme = {
   //   },
   // },
 };
-
-// export const optionButton = {
-//   button: {
-//     // font: {
-//     //   weight: undefined,
-//     // },
-//     background: "whitesmoke",
-//     border: {
-//       color: "dark-1",
-//       width: `2px`,
-//       radius: "0",
-//     },
-//     color: "#333",
-//     // padding: {
-//     //   vertical: undefined,
-//     //   horizontal: undefined,
-//     // },
-//     extend: undefined,
-//   },
-// };

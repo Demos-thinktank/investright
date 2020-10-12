@@ -18,6 +18,9 @@ import AddNewFunds from "./pages/AddNewFunds";
 //
 import { AuthContext } from "./store/AuthProvider";
 import FundType from "./pages/FundType";
+import IdentifyingFunds from "./pages/IdentifyingFunds";
+import FundTypeSubPage from "./pages/FundTypeSubPage";
+import IdentifyingInvestments from "./pages/IdentifyInvestments";
 
 let choices = [
   ["grapefruit", "Grapefruit"],
@@ -63,8 +66,17 @@ function App() {
           <Route exact path="/add-new-funds">
             {authRoute(<AddNewFunds />, "/")}
           </Route>
-          <Route path="/add-new-funds/:type">
-            {authRoute(<FundType />, "/")}
+          <Route exact path="/add-new-funds/:type">
+            <FundType />
+          </Route>
+          <Route exact path="/add-new-funds/:type/:slug">
+            <FundTypeSubPage />
+          </Route>
+          <Route path="/identify-funds">
+            <IdentifyingFunds />
+          </Route>
+          <Route path="/identify-investments">
+            <IdentifyingInvestments />
           </Route>
           <Route exact path="/select">
             <Select

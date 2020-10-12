@@ -1,9 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Box, Button, Layer, Text } from "grommet";
 import styled from "styled-components";
-import { StatusGood } from "grommet-icons";
 import axios from "axios";
-import { Redirect, useHistory, withRouter } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { getFromStorage, removeFromStorage } from "../utils/storage";
 
 const StyledLayer = styled(Layer)`
@@ -17,8 +16,6 @@ const StyledButton = styled(Button)`
 `;
 
 const Logout = ({ setShow, history }) => {
-  const [loggedOut, setLoggedOut] = useState(false);
-
   //   const history = useHistory();
 
   async function handleLogout(e) {
@@ -61,17 +58,14 @@ const Logout = ({ setShow, history }) => {
           background="light-1"
         >
           <Text>Are you sure you want to logout?</Text>
-          {/* <br /> */}
-          {/* <StatusGood color="status-ok" size="xlarge" /> */}
-          {/* <Text>Continue to add new funds</Text> */}
           <Box
             direction="row"
             gap="medium"
             justify="center"
             margin={{ top: "medium", bottom: "small" }}
           >
-            <StyledButton label="Yes I'm sure" onClick={handleLogout} />
-            <StyledButton label="Cancel" onClick={() => setShow(false)} />
+            <StyledButton primary label="Yes I'm sure" onClick={handleLogout} />
+            <StyledButton alert label="Cancel" onClick={() => setShow(false)} />
           </Box>
           {/* <br /> */}
           <StyledButton

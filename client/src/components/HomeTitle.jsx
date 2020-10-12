@@ -6,7 +6,7 @@ const Title = styled.div`
 `;
 
 const H1 = styled.h1`
-  font-size: 3rem;
+  font-size: 4rem;
   font-weight: 400;
   display: flex;
   align-items: center;
@@ -20,6 +20,7 @@ const Span = styled.span`
 
 const P = styled.p`
   text-align: center;
+  font-size: "2rem";
 `;
 
 const HomeTitle = () => {

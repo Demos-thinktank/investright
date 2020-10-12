@@ -2,13 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { setInStorage } from "../utils/storage";
 import { AuthContext } from "../store/AuthProvider";
-import { Link, Redirect, useLocation, withRouter } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 // import { Redirect } from "react-router-dom";
 import styled from "styled-components";
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 
-import { Box, Form, FormField, Text, TextInput } from "grommet";
-import { StatusGood } from "grommet-icons";
+import { Button, FormField, TextInput } from "grommet";
 
 const Wrapper = styled.section`
   display: flex;
@@ -17,12 +16,12 @@ const Wrapper = styled.section`
   align-items: center;
 `;
 
-const Button = styled.button`
-  padding: 0.2rem 0.5rem;
-`;
+// const Button = styled.button`
+//   padding: 0.2rem 0.5rem;
+// `;
 
 const Signup = styled.p`
-  font-size: 0.8rem;
+  font-size: 1rem;
   padding: 0.5rem;
 `;
 
@@ -31,8 +30,8 @@ const Login = ({ history }) => {
     email: "",
     password: "",
   });
-  const [error, setError] = useState();
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [error, setError] = useState(false);
+  // const [loggedIn, setLoggedIn] = useState(false);
 
   // const history = useHistory();
   // let location = useLocation();
@@ -46,6 +45,7 @@ const Login = ({ history }) => {
   }, [login, auth]);
 
   function handleLoginChange(e) {
+    setError(false);
     let { name, value } = e.target;
     setLogin((previousValue) => ({
       ...previousValue,
@@ -111,22 +111,33 @@ const Login = ({ history }) => {
           placeholder="Password"
         />
       </FormField>
-      <Box>
-        <Button
-          type="submit"
-          style={{ margin: "1rem auto" }}
-          onClick={handleLogin}
-        >
-          Login
-        </Button>
-      </Box>
-      {/* </Form> */}
-      <br />
-      <Signup>
-        Don't have an account? <Link to="/signup">Sign Up</Link>
-      </Signup>
       <p>{error && error}</p>
-      {loggedIn && <Redirect to="/profile" />}
+      {/* <Box margin="medium"> */}
+      <Button
+        primary
+        type="submit"
+        size="large"
+        label="Login"
+        margin="medium"
+        // style={{ margin: "1rem auto" }}
+        onClick={handleLogin}
+        // style={{
+        //   color: "#15343a",
+        //   backgroundColor: "#e47058",
+        //   borderRadius: "5px",
+        //   fontSize: "1.5rem",
+        // }}
+      />
+      {/* </Box> */}
+      {/* </Form> */}
+      {/* <br /> */}
+      <Signup>
+        Don't have an account?{" "}
+        <Link to="/signup" style={{ color: "#00739D" }}>
+          Sign Up
+        </Link>
+      </Signup>
+      {/* {loggedIn && <Redirect to="/profile" />} */}
     </Wrapper>
   );
 };
