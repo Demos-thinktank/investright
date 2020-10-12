@@ -3,9 +3,9 @@ const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 const mongoose = require("mongoose");
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
+// if (process.env.NODE_ENV !== "production") {
+require("dotenv").config();
+// }
 const express = require("express");
 const app = express();
 
@@ -59,9 +59,9 @@ app.use("/api/account", require("./routes/account"));
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "..", "client", "build")));
 
-  //   app.get("*", (req, res) => {
-  //     res.sendFile(path.join(__dirname, "..", "client", "build"));
-  //   });
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "..", "client", "build"));
+  });
 }
 
 module.exports = app;
