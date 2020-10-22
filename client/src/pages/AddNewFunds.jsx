@@ -19,7 +19,7 @@ const fundButtonData = [
   {
     label: "A self-invested personal pension (a ‘SIPP’)",
     href: "/add-new-funds/other-investment",
-    // iconText: "TBC",
+    iconText: "A self-invested personal pension (SIPP) is a personal pension where you are free to choose any investment you like and not just the provider's range of funds.",
   },
 ];
 
@@ -41,7 +41,7 @@ const AddNewFunds = () => {
       >
         Add New Funds
       </Text>
-      <Text as="p" size="medium" margin={{ top: "small", bottom: "small" }}>
+      <Text as="p" size="xlarge" weight={500} margin={{ top: "small", bottom: "small" }} textAlign='center'>
         Please select the type if investment you want to find out about{" "}
       </Text>
 

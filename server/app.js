@@ -26,7 +26,7 @@ mongoose.connection
     );
   })
   .on("error", (error) => {
-    console.log("Connection error: ", error);
+    console.error("MongoDB Connection error: ", error);
   });
 
 app.use(bodyParser.json());
@@ -54,6 +54,7 @@ app.use(morgan("dev"));
 // Backend routes
 // app.use("/api/example", require("./routes/example-routes"));
 app.use("/api/account", require("./routes/account"));
+app.use("/api/climetrics", require("./routes/climetrics"));
 
 // Serve static files from the React app
 if (process.env.NODE_ENV === "production") {

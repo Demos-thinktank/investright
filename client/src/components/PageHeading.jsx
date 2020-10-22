@@ -1,10 +1,10 @@
 import React from "react";
-import { Text } from "grommet";
+import { Box, Text } from "grommet";
 
 const PageHeading = ({ title, subheading }) => {
   return (
-    <>
-      <Text as="h1" size="xlarge" margin={{ top: "small", bottom: "medium" }}>
+    <Box width={{"max": "90vw"}}>
+      <Text as="h1" size="xlarge" margin={{ top: "small", bottom: subheading ? "small" : 'medium' }}>
         {title}
       </Text>
       {subheading && (
@@ -18,7 +18,7 @@ const PageHeading = ({ title, subheading }) => {
           {subheading}
         </Text>
       )}
-    </>
+    </Box>
   );
 };
 

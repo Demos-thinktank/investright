@@ -9,20 +9,20 @@ const FundButton = ({ label, href, iconText }) => {
   const history = useHistory();
 
   return (
-    <Box width="100%" align="center">
+    <Box width="80%" align="center" margin={{top: '1rem', bottom: '1rem'}}>
       <Box width="100%" align="center" direction="row">
         <Button
           secondary
+          fundButton
           fill="horizontal"
           size="large"
           label={label}
           onClick={() => history.push(href)}
-          reverse={true}
+          reverse={true}         
           // hoverIndicator={}
           // color="dark-1"
         />
         {/* {iconText && ( */}
-        {/* <> */}
         <Button
           alignSelf="end"
           plain
@@ -30,10 +30,6 @@ const FundButton = ({ label, href, iconText }) => {
           icon={<HelpOption color="#1d3336" />}
           reverse={true}
         />
-        {/* <Box align="end" width="100%">
-        
-      </Box> */}
-        {/* </> */}
         {/* )} */}
       </Box>
       <Collapsible open={open}>

@@ -21,7 +21,7 @@ const OtherInvestment = () => {
       />
       <Button
         secondary
-        margin={{ top: "medium" }}
+        margin={{ vertical: "medium", right: 'auto' }}
         onClick={() =>
           history.push("/add-new-funds/other-investment/asset-managers")
         }

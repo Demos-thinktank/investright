@@ -21,6 +21,7 @@ import FundType from "./pages/FundType";
 import IdentifyingFunds from "./pages/IdentifyingFunds";
 import FundTypeSubPage from "./pages/FundTypeSubPage";
 import IdentifyingInvestments from "./pages/IdentifyInvestments";
+import MyActions from "./pages/MyActions";
 
 let choices = [
   ["grapefruit", "Grapefruit"],
@@ -77,6 +78,9 @@ function App() {
           </Route>
           <Route path="/identify-investments">
             <IdentifyingInvestments />
+          </Route>
+          <Route path="/my-actions">
+            <MyActions />
           </Route>
           <Route exact path="/select">
             <Select

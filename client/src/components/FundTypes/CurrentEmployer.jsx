@@ -1,13 +1,37 @@
-import React, { useState } from "react";
+import React, { useEffect, useContext } from "react";
+import axios from 'axios';
 import { Box, Button, Form, TextInput } from "grommet";
-import { FormSearch } from "grommet-icons";
+import { FormAdd } from "grommet-icons";
 import { useHistory } from "react-router-dom";
 import PageHeading from "../PageHeading";
+import Autocomplete from "../AutoComplete";
+import AutoSuggest from "../AutoSuggest/AutoSuggestInput";
+import { getFromStorage } from "../../utils/storage";
+import { ClimetricsContext } from '../../store/ClimetricsProvider'
+
+import dummyInputVals from "../AutoSuggest/dummyInputVals";
 
 const CurrentEmployer = () => {
-  const [search, setSearch] = useState("");
+  const { climetricsFunds, setClimetricsFunds } = useContext(ClimetricsContext)
 
   const history = useHistory();
+
+  useEffect(() => {
+    climetricsData()
+  }, [])
+
+  async function climetricsData() {
+    const localStorageToken = await getFromStorage("Investright");
+    const config = {
+      headers: { Authorization: `Bearer ${localStorageToken}` },
+    };
+    axios
+      .get("/api/climetrics/funds", config)
+      .then((res) => {
+        setClimetricsFunds(res.data);
+      })
+      .catch(console.log);
+  }
 
   return (
     <>
@@ -20,7 +44,7 @@ const CurrentEmployer = () => {
       <Box>
         <Form>
           <Box direction="row" gap="medium">
-            <TextInput
+            {/* <TextInput
               placeholder="Type here"
               value={search}
               size="medium"
@@ -31,22 +55,48 @@ const CurrentEmployer = () => {
               //   label="Search"
               icon={<FormSearch />}
               reverse={true}
-            ></Button>
+            ></Button> */}
+            {/* <Autocomplete
+              suggestions={[
+                "Alligator",
+                "Bask",
+                "Crocodilian",
+                "Death Roll",
+                "Eggs",
+                "Jaws",
+                "Reptile",
+                "Solitary",
+                "Tail",
+                "Wetlands",
+              ]}
+            /> */}
+            <AutoSuggest inputVals={climetricsFunds} />
           </Box>
         </Form>
-        <Box direction="row" margin={{ vertical: "medium" }} gap="medium">
-          <Button secondary disabled>
-            Enter another pension organised by an employer
+        {/* <Box direction="row" margin={{ vertical: "medium" }} gap="medium"> */}
+          <Button 
+          secondary 
+          disabled
+          margin={{ vertical: 'medium', right: 'auto'}}
+          label='Enter another pension organised by an employer'
+          icon={<FormAdd />}
+          // reverse={true}
+          >
+            
           </Button>
-          <Button secondary disabled>
+          <Button 
+          secondary 
+          disabled
+          margin={{right: 'auto'}}
+          >
             I have entered all my pensions organised by an employer{" "}
           </Button>
-        </Box>
+        {/* </Box> */}
         <Button
           secondary
           label="I don't know the name of my pension fund"
           onClick={() => history.push("/identify-funds")}
-          margin={{ vertical: "medium" }}
+          margin={{ vertical: "large", right: 'auto' }}
           //   alignSelf="start"
         />
       </Box>

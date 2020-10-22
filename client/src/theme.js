@@ -145,6 +145,11 @@ export const theme = {
               text-transform: undefined;
             `;
         }
+        if (props.fundButton) {
+          extraStyles += `
+              padding: 1rem;
+            `;
+        }
         return `
             ${extraStyles}
           `;

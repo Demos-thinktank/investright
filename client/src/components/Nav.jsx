@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import { Box, Header, Nav, Menu, ResponsiveContext } from "grommet";
 import { Close, Menu as MenuIcon } from "grommet-icons";
@@ -29,6 +29,8 @@ const StyledLink = styled(Link)`
 
 const Navigation = () => {
   const [show, setShow] = useState(false);
+
+  const history = useHistory();
 
   return (
     <Header background="#15343a" pad="medium">
@@ -82,7 +84,7 @@ const Navigation = () => {
                   },
                   {
                     label: "My actions",
-                    onClick: () => {},
+                    onClick: () => history.push("/my-actions"),
                     margin: "xsmall",
                   },
                   {
@@ -118,6 +120,7 @@ const Navigation = () => {
                         backgroundColor: "#15343a",
                         color: "#ee7155 !important",
                       }}
+                      
                     >
                       {drop ? <Close /> : <MenuIcon />}
                     </Box>
@@ -132,7 +135,7 @@ const Navigation = () => {
                 <StyledLink to="#">About us</StyledLink>
                 <StyledLink to="#">How we calculate scores</StyledLink>
                 <StyledLink to="#">Contact us</StyledLink>
-                <StyledLink to="#">My actions</StyledLink>
+                <StyledLink to="/my-actions">My actions</StyledLink>
                 <StyledLink to="#">Profile</StyledLink>
                 <StyledLink to="#">Logout</StyledLink>
               </Nav>

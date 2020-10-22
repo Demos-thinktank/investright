@@ -15,12 +15,12 @@ const FundTypeSubPage = () => {
   return (
     <Layout>
       <PageHeading
-        title="Add new funds - Non pension investments and SIPPs"
-        subheading="Enter your asset managers"
+        title="Tell us about the pensions your employers have organised"
+        // subheading="Enter your asset managers"
       />
+      <Text size='large' margin={{vertical:'small'}}>Enter the your asset managers who manage your pension</Text>
       <Text as="p" margin={{ bottom: "medium" }}>
-        If you know which asset managers you use, please enter them here.
-        <HelpDropdown
+      If you know which asset managers you usemanage your pension please enter them here        <HelpDropdown
           iconText="An asset manager is someone who manages your funds, and makes decisions on what to invest in on your behalf"
           handleClick={() => setOpen(!open)}
           open={open}
@@ -45,7 +45,7 @@ const FundTypeSubPage = () => {
       </Form>
       <Button
         secondary
-        margin={{ top: "medium" }}
+        margin={{ vertical: "medium", right:'auto' }}
         onClick={() => history.push("/identify-investments")}
       >
         I don't which funds I have investments in

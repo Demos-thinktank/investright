@@ -4,6 +4,7 @@ import Layout from "../components/Layout";
 import PageHeading from "../components/PageHeading";
 import { AuthContext } from "../store/AuthProvider";
 import { Box, Button, TextArea } from "grommet";
+import { Mail } from 'grommet-icons'
 
 const IdentifyingFunds = () => {
   const [value, setValue] = React.useState(
@@ -31,11 +32,17 @@ const IdentifyingFunds = () => {
             fill={true}
           />
         </Box>
-        <Button label="Open in email app" disabled></Button>
+        <Button margin={{vertical: 'medium', right: 'auto'}} 
+        label="Open in email app" 
+        disabled 
+        icon={<Mail />}
+        reverse={true}
+        />
         <Button
           secondary
           label="Take me to my funds page"
           onClick={() => history.push("/profile")}
+          margin={{right: 'auto'}}
         />
       </Layout>
     );

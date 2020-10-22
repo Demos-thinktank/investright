@@ -4,11 +4,14 @@ import "./index.css";
 import App from "./App";
 // import * as serviceWorker from './serviceWorker';
 import AuthProvider from "./store/AuthProvider";
+import ClimetricsProvider from "./store/ClimetricsProvider";
 
 ReactDOM.render(
   <React.StrictMode>
     <AuthProvider>
-      <App />
+      <ClimetricsProvider>
+        <App />
+      </ClimetricsProvider>
     </AuthProvider>
   </React.StrictMode>,
   document.getElementById("root")
