@@ -19,7 +19,7 @@ const IdentifyingInvestments = () => {
     return (
       <Layout>
         <PageHeading
-          title="Add new funds - Non pension investments and SIPPs"
+          title="Enquiry email page - placeholder"
           subheading="If you have a financial advisor or stockbroker, you may want to ask your them for a list of the funds you have investments in. Here is a suggested email which you can edit and send via your email app by clicking on the button below."
         />
         <Box height={{ min: "small" }}>

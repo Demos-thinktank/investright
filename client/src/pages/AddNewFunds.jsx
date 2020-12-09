@@ -14,12 +14,16 @@ const fundButtonData = [
     label: "A personal pension",
     href: "/add-new-funds/other-pension",
     iconText:
-      "This option includes any pension that has not been organised by one of your employers, unless it is a SIPP (see next option)",
+      "Any pension which has not been organised be one of your employers, unless it is a SIPP - in which case see next option",
   },
   {
     label: "A self-invested personal pension (a ‘SIPP’)",
     href: "/add-new-funds/other-investment",
-    iconText: "A self-invested personal pension (SIPP) is a personal pension where you are free to choose any investment you like and not just the provider's range of funds.",
+    iconText:
+      "A self-invested personal pension (SIPP) is a personal pension where you are free to choose any investment you like and not just the provider's range of funds.",
+  },
+  {
+    label: "Another type of investment",
   },
 ];
 
@@ -41,8 +45,14 @@ const AddNewFunds = () => {
       >
         Add New Funds
       </Text>
-      <Text as="p" size="xlarge" weight={500} margin={{ top: "small", bottom: "small" }} textAlign='center'>
-        Please select the type if investment you want to find out about{" "}
+      <Text
+        as="p"
+        size="xlarge"
+        weight={500}
+        margin={{ top: "small", bottom: "small" }}
+        textAlign="center"
+      >
+        Please enter the type of investment* you want to find out about{" "}
       </Text>
 
       <Box
@@ -53,14 +63,12 @@ const AddNewFunds = () => {
         fill="horizontal"
       >
         {fundButtonData.map((element, i) => (
-          // <>
           <FundButton
             key={i}
             label={element.label}
             href={element.href}
             iconText={element.iconText ? element.iconText : ""}
           />
-          // </>
         ))}
       </Box>
       <Text

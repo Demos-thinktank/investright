@@ -275,19 +275,13 @@ const SignUp = () => {
         )}
         {/* <br /> */}
         <StyledButton
-          primary
-          label="Sign Up"
-          size="large"
+          // primary
+          label="Create new account and login"
+          size="medium"
           margin="medium"
           type="submit"
         />
       </StyledForm>
-      <Login>
-        Already have an account?{" "}
-        <Link style={{ color: "#00739D" }} to="/">
-          Login
-        </Link>
-      </Login>
       {show && (
         <StyledLayer animation="fadeIn" full={true} position="center">
           <Box

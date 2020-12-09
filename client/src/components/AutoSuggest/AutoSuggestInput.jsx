@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Autosuggest from "react-autosuggest";
 import "./autosuggestTheme.css";
 
-const AutoSuggestInput = ({ inputVals }) => {
+const AutoSuggestInput = ({ inputVals, placeholder }) => {
   const [state, setState] = useState({
     value: "",
     suggestions: [],
@@ -17,12 +17,14 @@ const AutoSuggestInput = ({ inputVals }) => {
 
     const regex = new RegExp(escapedValue, "i");
 
-    return inputVals.filter((inputVal) => regex.test(inputVal['Fund Name']));
+    return inputVals.filter((inputVal) => regex.test(inputVal["Fund Name"]));
   };
 
-  const getSuggestionValue = (suggestion) => suggestion['Fund Name'];
+  const getSuggestionValue = (suggestion) => suggestion["Fund Name"];
 
-  const renderSuggestion = (suggestion) => <span>{suggestion['Fund Name']}</span>;
+  const renderSuggestion = (suggestion) => (
+    <span>{suggestion["Fund Name"]}</span>
+  );
 
   function onChange(event, { newValue }) {
     setState((prevState) => ({ ...prevState, value: newValue }));
@@ -41,7 +43,7 @@ const AutoSuggestInput = ({ inputVals }) => {
 
   const { value, suggestions } = state;
   const inputProps = {
-    placeholder: "Search here",
+    placeholder: placeholder,
     value,
     onChange: onChange,
   };

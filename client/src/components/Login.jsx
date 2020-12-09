@@ -7,7 +7,7 @@ import { Link, withRouter } from "react-router-dom";
 import styled from "styled-components";
 // import { useHistory } from "react-router-dom";
 
-import { Button, FormField, TextInput } from "grommet";
+import { Button, Box, FormField, Text, TextInput } from "grommet";
 
 const Wrapper = styled.section`
   display: flex;
@@ -16,13 +16,9 @@ const Wrapper = styled.section`
   align-items: center;
 `;
 
-// const Button = styled.button`
-//   padding: 0.2rem 0.5rem;
-// `;
-
-const Signup = styled.p`
-  font-size: 1rem;
-  padding: 0.5rem;
+const LinkText = styled(Text)`
+  margin: 1rem;
+  text-decoration: underline;
 `;
 
 const Login = ({ history }) => {
@@ -37,8 +33,6 @@ const Login = ({ history }) => {
   // let location = useLocation();
 
   const { auth, setAuth } = useContext(AuthContext);
-
-  // console.log("authcontext", auth.isAuthenticated);
 
   useEffect(() => {
     console.log(login, auth);
@@ -70,11 +64,7 @@ const Login = ({ history }) => {
           // user: res.data,
         }));
       })
-      // .then(() => setLoggedIn(true))
-      // .then(() => history.push("/profile"))
-      // .then(() => window.location.reload())
-      .catch(() => setError("Please try again"));
-    // setLoggedIn(true);
+      .catch(() => setError(true));
   }
 
   useEffect(() => {
@@ -111,33 +101,39 @@ const Login = ({ history }) => {
           placeholder="Password"
         />
       </FormField>
-      <p>{error && error}</p>
-      {/* <Box margin="medium"> */}
-      <Button
-        primary
-        type="submit"
-        size="large"
-        label="Login"
-        margin="medium"
-        // style={{ margin: "1rem auto" }}
-        onClick={handleLogin}
-        // style={{
-        //   color: "#15343a",
-        //   backgroundColor: "#e47058",
-        //   borderRadius: "5px",
-        //   fontSize: "1.5rem",
-        // }}
-      />
-      {/* </Box> */}
-      {/* </Form> */}
-      {/* <br /> */}
-      <Signup>
-        Don't have an account?{" "}
-        <Link to="/signup" style={{ color: "#00739D" }}>
-          Sign Up
+      <p style={{ visibility: error ? "visible" : "hidden" }}>Please try again</p>
+      <Box direction="row">
+        <Link to="/signup">
+          <Button
+            // primary
+            type="submit"
+            size="medium"
+            label="Register"
+            margin="small"
+            // onClick={handleLogin}
+          />
         </Link>
-      </Signup>
-      {/* {loggedIn && <Redirect to="/profile" />} */}
+        <Button
+          // primary
+          type="submit"
+          size="medium"
+          label="Login"
+          margin="small"
+          onClick={handleLogin}
+        />
+      </Box>
+      <Link to="/signup">
+        <Button
+          // primary
+          type="submit"
+          size="medium"
+          label="Proceed as guest"
+          margin="small"
+          // onClick={handleLogin}
+        />
+      </Link>
+      <LinkText>Forgot your password?</LinkText>
+      {/* </Form> */}
     </Wrapper>
   );
 };

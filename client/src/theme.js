@@ -14,6 +14,7 @@ export const theme = {
       demosLight: "#e0f1f8",
       demosLightGrey: "#bfc6cf",
       demosDarkGrey: "#676c72",
+      disabledForNow: 'lightgray',
       primary: "#333",
       good: "green",
       brand: "#333",
@@ -112,6 +113,13 @@ export const theme = {
           border-radius: 5px;
           `;
         }
+        if (props.tooltip) {
+          extraStyles += `
+          margin: 2px;
+          padding: 0 !important;
+          border: 0px solid black;
+            `;
+        }
         return `
             ${extraStyles}
           `;
@@ -124,6 +132,17 @@ export const theme = {
         color: "demosOrange",
         width: `2px`,
         radius: "5px",
+      },
+      extend: (props) => {
+        let extraStyles = "";
+        if (props.fundButton) {
+          extraStyles += `
+              padding: 1rem;
+            `;
+        }
+        return `
+            ${extraStyles}
+          `;
       },
     },
     secondary: {

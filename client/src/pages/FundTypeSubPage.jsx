@@ -1,5 +1,5 @@
-import { Box, Button, Form, Text, TextInput } from "grommet";
-import { FormSearch } from "grommet-icons";
+import { Box, Button, Form, RadioButtonGroup, Text, TextInput } from "grommet";
+import { FormAdd, FormNextLink, FormSearch } from "grommet-icons";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import HelpDropdown from "../components/HelpDropdown";
@@ -7,8 +7,7 @@ import Layout from "../components/Layout";
 import PageHeading from "../components/PageHeading";
 
 const FundTypeSubPage = () => {
-  const [search, setSearch] = useState();
-  const [open, setOpen] = useState(false);
+  const [value, setValue] = React.useState("one");
 
   const history = useHistory();
 
@@ -16,40 +15,47 @@ const FundTypeSubPage = () => {
     <Layout>
       <PageHeading
         title="Tell us about the pensions your employers have organised"
-        // subheading="Enter your asset managers"
+        subheading="Your employer pensions"
       />
-      <Text size='large' margin={{vertical:'small'}}>Enter the your asset managers who manage your pension</Text>
-      <Text as="p" margin={{ bottom: "medium" }}>
-      If you know which asset managers you usemanage your pension please enter them here        <HelpDropdown
-          iconText="An asset manager is someone who manages your funds, and makes decisions on what to invest in on your behalf"
-          handleClick={() => setOpen(!open)}
-          open={open}
-        />
-      </Text>
-
-      <Form>
-        <Box direction="row" gap="medium">
-          <TextInput
-            placeholder="Type here"
-            value={search}
-            size="medium"
-            onChange={(event) => setSearch(event.target.value)}
-          />
-          <Button
-            disabled
-            //   label="Search"
-            icon={<FormSearch />}
-            reverse={true}
-          ></Button>
-        </Box>
-      </Form>
       <Button
-        secondary
-        margin={{ vertical: "medium", right:'auto' }}
-        onClick={() => history.push("/identify-investments")}
-      >
-        I don't which funds I have investments in
-      </Button>
+        disabled
+        margin={{ bottom: "medium", right: "auto" }}
+        label="Add or edit employer pensions"
+        icon={<FormAdd />}
+        // reverse={true}
+      />
+      <Text as="p">
+        We can provide a rating of the asset managers you have told us about.
+        However asset managers manage many different funds, and your pensions
+        will be in one or more of these funds. If we can identify which funds
+        they are in, we can provide a more accurate rating of your pensions.
+      </Text>
+      <Box margin={{ vertical: "medium" }}>
+        <RadioButtonGroup
+          name="doc"
+          options={[
+            {
+              disabled: true,
+              name: "one",
+              label: "I don't know which funds my pensions are in",
+            },
+            {
+              disabled: true,
+              name: "one",
+              label: "I know which funds my pensions are in",
+            },
+          ]}
+          value={value}
+          onChange={(event) => setValue(event.target.value)}
+        />
+      </Box>
+      <Button
+        margin={{ vertical: "small", right: "auto" }}
+        // onClick={() => history.push("/identify-investments")}
+        label="Next Step"
+        disabled
+        icon={<FormNextLink />}
+      />
     </Layout>
   );
 };

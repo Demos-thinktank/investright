@@ -9,7 +9,7 @@ import {
 } from "react-router-dom";
 // PAGES
 // use react lazy + suspense
-import Select from "./components/Select";
+// import Select from "./components/Select";
 import Home from "./pages/Home";
 import SignUp from "./pages/SignUp";
 import NotFound404 from "./pages/NotFound404";
@@ -23,13 +23,6 @@ import FundTypeSubPage from "./pages/FundTypeSubPage";
 import IdentifyingInvestments from "./pages/IdentifyInvestments";
 import MyActions from "./pages/MyActions";
 
-let choices = [
-  ["grapefruit", "Grapefruit"],
-  ["lime", "Lime"],
-  ["coconut", "Coconut"],
-  ["mango", "Mango"],
-];
-
 function App() {
   const { auth } = useContext(AuthContext);
   console.log("app authcontext", auth.isAuthenticated);
@@ -37,18 +30,22 @@ function App() {
   function publicRoute(component, path) {
     if (!auth.loading && !auth.isAuthenticated) {
       return component;
-    } else {
-      return <Redirect to={path} />;
     }
+    return <Redirect to={path} />;
   }
 
   function authRoute(component, path) {
     if (!auth.loading && auth.isAuthenticated) {
       return component;
-    } else {
-      return <Redirect to={path} />;
     }
+    return <Redirect to={path} />;
   }
+
+  // auth route improved
+  const redirect = (component, path) => {
+    const isLoggedIn = !auth.loading && auth.isAuthenticated;
+    return isLoggedIn ? component : <Redirect to={path} />;
+  };
 
   return (
     <Grommet theme={theme}>
@@ -83,11 +80,11 @@ function App() {
             <MyActions />
           </Route>
           <Route exact path="/select">
-            <Select
+            {/* <Select
               values={choices}
               selected="lime"
               callback={(val) => console.log(val)}
-            />
+            /> */}
           </Route>
           {/* <Route component={NotFound404} /> */}
           <Route>

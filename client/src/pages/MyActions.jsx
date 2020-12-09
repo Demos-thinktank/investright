@@ -41,7 +41,6 @@ const MyActions = () => {
           </Link>
         </Box>
         <Box direction="row" justify="end" margin={{ left: "auto" }}>
-          {" "}
           <Text
             as="h1"
             size="large"
@@ -54,113 +53,21 @@ const MyActions = () => {
           </Link>
         </Box>
       </Box>
-      <Box
-        border={{
-          color: "demosDark",
-          size: "small",
-          style: "solid",
-          side: "all",
-        }}
-        round="medium"
-        margin={{ top: "medium", bottom: "medium" }}
-        pad="medium"
-        justify="center"
-        align="center"
-        overflow="hidden"
-      >
-        <Box
-          direction="row"
-          justify="center"
-          wrap="true"
-          margin={{ bottom: "small" }}
-        >
-          <Box
-            direction="row"
-            weight="bold"
-            justify="center"
-            align="center"
-            margin={{ horizontal: "xsmall" }}
+      <Box margin={{vertical: 'small'}}>
+      <Text>On this page you can see a summary report on the climate and financial performance of your pensions and investments. For more detail and to take action, click on the relevant more details button. The climate figures are based on data from <Link
+            to="#"
+            style={{ fontSize: "0.8em", textDecoration: "underline" }}
           >
-            <Box
-              height="1rem"
-              width="1.25rem"
-              background="red"
-              margin={{ right: "0.25rem" }}
-            />
-            <Text>Critical Funds</Text>
-          </Box>
-          <Box
-            direction="row"
-            weight="bold"
-            justify="center"
-            align="center"
-            margin={{ horizontal: "xsmall" }}
+            Climetrics
+          </Link> and the financial figures on data from <Link
+            to="#"
+            style={{ fontSize: "0.8em", textDecoration: "underline" }}
           >
-            <Box
-              height="1rem"
-              width="1.25rem"
-              background="orange"
-              margin={{ right: "0.25rem" }}
-            />
-            <Text>Mediocre Funds</Text>
-          </Box>
-          <Box
-            direction="row"
-            weight="bold"
-            justify="center"
-            align="center"
-            margin={{ horizontal: "xsmall" }}
-          >
-            <Box
-              height="1rem"
-              width="1.25rem"
-              background="green"
-              margin={{ right: "0.25rem" }}
-            />
-            <Text>Good Funds</Text>
-          </Box>
-        </Box>
-        <ActionsResultChart />
-        <Box
-          direction="row"
-          align="center"
-          margin={{ top: "medium", bottom: "small" }}
-        >
-          <Box
-            border={{
-              color: "#e30303",
-              size: "medium",
-            }}
-            pad={{ horizontal: "small" }}
-            margin={{ right: "small" }}
-            round="small"
-          >
-            <Announce color="#e30303" size="large" />
-          </Box>
-          <Box
-            pad={{ horizontal: "1rem", vertical: "0.5rem" }}
-            background="#e30303"
-          >
-            <Text color="white" size="xxlarge" weight="bold" textAlign="center">
-              Take action
-            </Text>
-          </Box>
-        </Box>
-        <Text size="large" textAlign="center" weight="bold">
-          You have
-          <Text size="xlarge" color="red">
-            {" "}
-            2 critical{" "}
-          </Text>
-          and
-          <Text size="xlarge" color="orange">
-            {" "}
-            4 mediocre{" "}
-          </Text>
-          funds
-          <br />
-          You can take action to improve these below
-        </Text>
+            Refinitiv
+          </Link>, both leading suppliers of data in their fields. </Text>
+      <Text margin={{vertical: 'small'}}>Financial performance is rated from 1 to 5, where 1 is the best possible performance</Text>
+      <Text margin={{bottom: 'small'}}>Climate performance is rated on the following scale:</Text>
+      <Text>Click on any climate or financial performance section to see more details </Text>
       </Box>
     </Layout>
   );

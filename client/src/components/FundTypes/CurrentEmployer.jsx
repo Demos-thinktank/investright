@@ -1,24 +1,24 @@
 import React, { useEffect, useContext } from "react";
-import axios from 'axios';
-import { Box, Button, Form, TextInput } from "grommet";
-import { FormAdd } from "grommet-icons";
+import axios from "axios";
+import { Box, Button, Form, Text, TextInput } from "grommet";
+import { FormAdd, FormSearch, HelpOption } from "grommet-icons";
 import { useHistory } from "react-router-dom";
 import PageHeading from "../PageHeading";
 import Autocomplete from "../AutoComplete";
 import AutoSuggest from "../AutoSuggest/AutoSuggestInput";
 import { getFromStorage } from "../../utils/storage";
-import { ClimetricsContext } from '../../store/ClimetricsProvider'
+import { ClimetricsContext } from "../../store/ClimetricsProvider";
 
 import dummyInputVals from "../AutoSuggest/dummyInputVals";
 
 const CurrentEmployer = () => {
-  const { climetricsFunds, setClimetricsFunds } = useContext(ClimetricsContext)
+  const { climetricsFunds, setClimetricsFunds } = useContext(ClimetricsContext);
 
   const history = useHistory();
 
   useEffect(() => {
-    climetricsData()
-  }, [])
+    climetricsData();
+  }, []);
 
   async function climetricsData() {
     const localStorageToken = await getFromStorage("Investright");
@@ -37,67 +37,67 @@ const CurrentEmployer = () => {
     <>
       <PageHeading
         title="Tell us about the pensions your employers have organised"
-        subheading="Search below for each of your pension schemes by name. This should be on
-        a document provided by your current or former employers. Click the
-        button below if you're not sure, and we can help you find out"
+        subheading="Enter the name of your employer"
       />
       <Box>
-        <Form>
+        <Box direction="row" gap="medium">
+          <AutoSuggest
+            inputVals={climetricsFunds}
+            placeholder="Your employer's name"
+          />
+          <Button
+            disabled
+            icon={<FormSearch />}
+            // reverse={true}
+          ></Button>
+        </Box>
+        <Box
+          pad={{ left: "medium" }}
+          margin={{ vertical: "medium" }}
+          border={{
+            color: "disabledForNow",
+            size: "medium",
+            style: "solid",
+            side: "left",
+          }}
+        >
+          <Text color="disabledForNow">
+            Enter the asset managers who manage your pension organised by this
+            employer
+          </Text>
+          <Text color="disabledForNow" margin={{ vertical: "small" }}>
+            If you know which asset managers manage your pension please enter
+            them here <HelpOption color="disabledForNow" />
+          </Text>
           <Box direction="row" gap="medium">
-            {/* <TextInput
-              placeholder="Type here"
-              value={search}
-              size="medium"
-              onChange={(event) => setSearch(event.target.value)}
-            />
+            <AutoSuggest placeholder="Start typing to search" />
             <Button
               disabled
-              //   label="Search"
-              icon={<FormSearch />}
-              reverse={true}
-            ></Button> */}
-            {/* <Autocomplete
-              suggestions={[
-                "Alligator",
-                "Bask",
-                "Crocodilian",
-                "Death Roll",
-                "Eggs",
-                "Jaws",
-                "Reptile",
-                "Solitary",
-                "Tail",
-                "Wetlands",
-              ]}
-            /> */}
-            <AutoSuggest inputVals={climetricsFunds} />
+              icon={<FormAdd />}
+              label="Add asset manager"
+              // reverse={true}
+            ></Button>
           </Box>
-        </Form>
-        {/* <Box direction="row" margin={{ vertical: "medium" }} gap="medium"> */}
-          <Button 
-          secondary 
+          <Button
+            disabled
+            label="I don't know which asset managers manage my pension from this employer"
+            // onClick={() => history.push("/identify-funds")}
+            margin={{ vertical: "medium", right: "auto" }}
+            //   alignSelf="start"
+          />
+        </Box>
+        <Button
           disabled
-          margin={{ vertical: 'medium', right: 'auto'}}
-          label='Enter another pension organised by an employer'
+          margin={{ right: "auto" }}
+          label="Add details of a pension organised by another employer"
           icon={<FormAdd />}
           // reverse={true}
-          >
-            
-          </Button>
-          <Button 
-          secondary 
-          disabled
-          margin={{right: 'auto'}}
-          >
-            I have entered all my pensions organised by an employer{" "}
-          </Button>
-        {/* </Box> */}
+        />
         <Button
           secondary
-          label="I don't know the name of my pension fund"
-          onClick={() => history.push("/identify-funds")}
-          margin={{ vertical: "large", right: 'auto' }}
-          //   alignSelf="start"
+          label="I have entered all my pensions organised by an employer"
+          margin={{ vertical: "medium", right: "auto" }}
+          onClick={() => history.push("/add-new-funds/current-employer/pensions")}
         />
       </Box>
     </>

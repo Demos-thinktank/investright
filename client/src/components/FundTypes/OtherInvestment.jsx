@@ -1,6 +1,8 @@
-import { Button, Select } from "grommet";
+import { Box, Button, Select, Text } from "grommet";
+import { FormAdd, FormNextLink, HelpOption } from "grommet-icons";
 import React from "react";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
+import AutoSuggestInput from "../AutoSuggest/AutoSuggestInput";
 import PageHeading from "../PageHeading";
 
 const OtherInvestment = () => {
@@ -11,23 +13,39 @@ const OtherInvestment = () => {
   return (
     <>
       <PageHeading
-        title="Add new funds - Other pensions"
-        subheading="Do you manage your investments through one of these platforms?"
+        title="Tell us about your investments or your SIPP"
+        subheading="Enter the asset managers"
       />
-      <Select
+      <Text color="disabledForNow" margin={{ bottom: "small" }}>
+        If you know which asset managers manage you use, please enter them here{" "}
+        <HelpOption color="disabledForNow" />
+      </Text>
+      <Box direction="row" gap="medium">
+        <AutoSuggestInput placeholder="Start typing to search" />
+        <Button
+          disabled
+          icon={<FormAdd />}
+          label="Add asset manager"
+          // reverse={true}
+        ></Button>
+      </Box>
+      {/* <Select
         options={["option1", "option2", "option3"]}
         value={value}
         onChange={({ option }) => setValue(option)}
-      />
+      /> */}
       <Button
-        secondary
-        margin={{ vertical: "medium", right: 'auto' }}
-        onClick={() =>
-          history.push("/add-new-funds/other-investment/asset-managers")
-        }
-      >
-        I don't use any of these platforms
-      </Button>
+        margin={{ vertical: "medium", right: "auto" }}
+        label="I don't know which asset managers I use"
+        onClick={() => history.push("/identify-investments")}
+      />
+      <Link to="/my-actions">
+        <Button
+          margin={{ right: "auto" }}
+          label="I've added all of my asset managers"
+          icon={<FormNextLink />}
+        />
+      </Link>
     </>
   );
 };
