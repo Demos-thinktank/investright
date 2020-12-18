@@ -24,6 +24,7 @@ router.post("/signup", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const { email, password } = req.body;
+    // Custom function defined y Maria - see notes in User model
     const user = await User.findByCredentials(email, password).catch(
       console.log
     );
