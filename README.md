@@ -1,6 +1,6 @@
-# not-perspectives-integration
+# not-perspectives-integration but Investright
 
-Plugging in to Google's perspectives API, and parsing the results
+Not even slightly anything to do with Google's Perspectives API
 
 ### To Run Locally
 
