@@ -1,11 +1,9 @@
 export const theme = {
   global: {
     font: {
-      //   family: "Roboto",
       size: "1rem",
       height: "initial",
     },
-    // color: "inherit",
     colors: {
       demosDark: "#1d3336",
       demosOrange: "#ee7155",
@@ -14,7 +12,7 @@ export const theme = {
       demosLight: "#e0f1f8",
       demosLightGrey: "#bfc6cf",
       demosDarkGrey: "#676c72",
-      disabledForNow: 'lightgray',
+      disabledForNow: "lightgray",
       primary: "#333",
       good: "green",
       brand: "#333",
@@ -53,15 +51,6 @@ export const theme = {
     },
   },
   button: {
-    // font: {
-    //   weight: undefined,
-    // },
-    // active: {
-    //   secondary: {
-    //     color: "#85ccd0",
-    //     background: "#15343a",
-    //   },
-    // },
     hover: {
       primary: {
         color: "demosDark",
@@ -91,7 +80,6 @@ export const theme = {
           `;
       },
     },
-    // color: "inherit",
     default: {
       background: "transparent",
       border: {
@@ -99,10 +87,6 @@ export const theme = {
         width: `2px`,
         radius: "5px",
       },
-      // padding: {
-      //   vertical: undefined,
-      //   horizontal: undefined,
-      // },
       extend: (props) => {
         let extraStyles = "";
         if (props.alert) {
@@ -153,10 +137,6 @@ export const theme = {
         width: `2px`,
         radius: "5px",
       },
-      // padding: {
-      //   vertical: undefined,
-      //   horizontal: undefined,
-      // },
       extend: (props) => {
         let extraStyles = "";
         if (props.info) {
@@ -175,10 +155,4 @@ export const theme = {
       },
     },
   },
-  // menu: {
-  //   icons: {
-  //     down: MenuIcon,
-  //     up: FormClose,
-  //   },
-  // },
 };

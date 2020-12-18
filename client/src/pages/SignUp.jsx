@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
-// import { AuthContext } from "../store/AuthProvider";
+import { useHistory } from "react-router-dom";
 import HomeTitle from "../components/HomeTitle";
 import { setInStorage } from "../utils/storage";
 import styled from "styled-components";
@@ -30,13 +29,7 @@ const StyledFormField = styled(FormField)`
 `;
 
 const StyledButton = styled(Button)`
-  /* padding: 0.2rem 0.5rem; */
   width: max-content;
-`;
-
-const Login = styled.p`
-  font-size: 1rem;
-  padding: 0.5rem;
 `;
 
 const StyledLayer = styled(Layer)`
@@ -64,8 +57,6 @@ const SignUp = () => {
       : undefined;
 
   function handleSubmit(e) {
-    // form validation library?
-    // if password = confirm password
     e.preventDefault();
     const user = { ...signUp };
     delete user.confirmPassword;
@@ -80,31 +71,13 @@ const SignUp = () => {
       .catch(console.log);
   }
 
-  //   const auth = useContext(AuthContext);
-
   function handleSignUpChange(e) {
-    // why this?
     let { name, value } = e.target;
-    // form validation library?
+
     if (name === "email") {
       value = value.toLowerCase();
     }
     value.trim();
-
-    // if (
-    //   signUp.confirmPassword > 7 &&
-    //   signUp.confirmPassword !== signUp.password
-    // ) {
-    //   setError({ ...error, passwordMatch: "Passwords do not match" });
-    //   return;
-    // }
-    // if (
-    //   signUp.confirmPassword > 7 &&
-    //   signUp.confirmPassword === signUp.password
-    // ) {
-    //   setError({ ...error, passwordMatch: "" });
-    //   return;
-    // }
 
     setSignUp((previousValue) => ({
       ...previousValue,
@@ -148,8 +121,7 @@ const SignUp = () => {
       <HomeTitle />
       <br />
       <br />
-      {/* validation */}
-      {/* https://www.w3schools.com/tags/tag_input.asp */}
+      {/* ensure all fields have form validation */}
       <StyledForm
         validate="blur"
         onReset={(event) => console.log(event)}
@@ -273,9 +245,7 @@ const SignUp = () => {
             <Text color="status-critical">{passwordError}</Text>
           </Box>
         )}
-        {/* <br /> */}
         <StyledButton
-          // primary
           label="Create new account and login"
           size="medium"
           margin="medium"

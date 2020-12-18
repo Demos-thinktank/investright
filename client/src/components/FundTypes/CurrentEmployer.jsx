@@ -1,15 +1,15 @@
 import React, { useEffect, useContext } from "react";
 import axios from "axios";
-import { Box, Button, Form, Text, TextInput } from "grommet";
+import { Box, Button, Text } from "grommet";
 import { FormAdd, FormSearch, HelpOption } from "grommet-icons";
 import { useHistory } from "react-router-dom";
 import PageHeading from "../PageHeading";
-import Autocomplete from "../AutoComplete";
+// import Autocomplete from "../AutoComplete";
 import AutoSuggest from "../AutoSuggest/AutoSuggestInput";
 import { getFromStorage } from "../../utils/storage";
 import { ClimetricsContext } from "../../store/ClimetricsProvider";
 
-import dummyInputVals from "../AutoSuggest/dummyInputVals";
+// import dummyInputVals from "../AutoSuggest/dummyInputVals";
 
 const CurrentEmployer = () => {
   const { climetricsFunds, setClimetricsFunds } = useContext(ClimetricsContext);
@@ -18,6 +18,7 @@ const CurrentEmployer = () => {
 
   useEffect(() => {
     climetricsData();
+    // eslint-disable-next-line
   }, []);
 
   async function climetricsData() {
@@ -40,16 +41,27 @@ const CurrentEmployer = () => {
         subheading="Enter the name of your employer"
       />
       <Box>
-        <Box direction="row" gap="medium">
-          <AutoSuggest
-            inputVals={climetricsFunds}
+        <Box direction="row" gap="small">
+          {/* <AutoSuggest
+            inputVals={dummyInputVals}
+            // inputVals={climetricsFunds}
             placeholder="Your employer's name"
+          /> */}
+          <input
+            list="browsers"
+            name="browser"
+            id="browser"
+            placeholder="Your employer's name"
+            style={{ width: "360px", padding: "10px 20px" }}
           />
-          <Button
-            disabled
-            icon={<FormSearch />}
-            // reverse={true}
-          ></Button>
+
+          <datalist id="browsers">
+            {climetricsFunds &&
+              climetricsFunds.map((fund, i) => (
+                <option value={fund["Fund Name"]} key={i} />
+              ))}
+          </datalist>
+          <Button disabled icon={<FormSearch />}></Button>
         </Box>
         <Box
           pad={{ left: "medium" }}
@@ -83,7 +95,6 @@ const CurrentEmployer = () => {
             label="I don't know which asset managers manage my pension from this employer"
             // onClick={() => history.push("/identify-funds")}
             margin={{ vertical: "medium", right: "auto" }}
-            //   alignSelf="start"
           />
         </Box>
         <Button
@@ -91,13 +102,14 @@ const CurrentEmployer = () => {
           margin={{ right: "auto" }}
           label="Add details of a pension organised by another employer"
           icon={<FormAdd />}
-          // reverse={true}
         />
         <Button
           secondary
           label="I have entered all my pensions organised by an employer"
           margin={{ vertical: "medium", right: "auto" }}
-          onClick={() => history.push("/add-new-funds/current-employer/pensions")}
+          onClick={() =>
+            history.push("/add-new-funds/current-employer/pensions")
+          }
         />
       </Box>
     </>

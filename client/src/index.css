@@ -35,10 +35,7 @@ a:visited {
   color: initial;
 }
 
+/* Navigation hover hack */
 .kjDngO:hover {
   color: #ee7155;
 }
-
-/* .canvas-container {
-  height: 30vh;
-} */

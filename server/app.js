@@ -36,21 +36,6 @@ app.use(cors());
 // Log server requests for easier error identification
 app.use(morgan("dev"));
 
-// CORS Headers => Required for cross-origin/ cross-server communication
-// nb - using cors instead of explicitly setting result headers
-// app.use((req, res, next) => {
-//   res.setHeader("Access-Control-Allow-Origin", "*");
-//   res.setHeader(
-//     "Access-Control-Allow-Headers",
-//     "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-//   );
-//   res.setHeader(
-//     "Access-Control-Allow-Methods",
-//     "GET, POST, PATCH, DELETE, OPTIONS"
-//   );
-//   next();
-// });
-
 // Backend routes
 // app.use("/api/example", require("./routes/example-routes"));
 app.use("/api/account", require("./routes/account"));

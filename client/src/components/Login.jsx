@@ -3,9 +3,7 @@ import axios from "axios";
 import { setInStorage } from "../utils/storage";
 import { AuthContext } from "../store/AuthProvider";
 import { Link, withRouter } from "react-router-dom";
-// import { Redirect } from "react-router-dom";
 import styled from "styled-components";
-// import { useHistory } from "react-router-dom";
 
 import { Button, Box, FormField, Text, TextInput } from "grommet";
 
@@ -27,10 +25,6 @@ const Login = ({ history }) => {
     password: "",
   });
   const [error, setError] = useState(false);
-  // const [loggedIn, setLoggedIn] = useState(false);
-
-  // const history = useHistory();
-  // let location = useLocation();
 
   const { auth, setAuth } = useContext(AuthContext);
 
@@ -48,9 +42,7 @@ const Login = ({ history }) => {
   }
 
   async function handleLogin(e) {
-    // if login fields not empty, not found, email val, password val...
     e.preventDefault();
-    // let { from } = location.state || { from: { pathname: "/profile" } };
     await axios
       .post("/api/account/login", login)
       .then((res) => {
@@ -76,9 +68,6 @@ const Login = ({ history }) => {
 
   return (
     <Wrapper>
-      {/* Redirect for login/signup component */}
-      {/* {auth && auth.isAuthenticated && <Redirect to="/select" />} */}
-      {/* <Form> */}
       <FormField
         name="email"
         onChange={handleLoginChange}
@@ -101,20 +90,14 @@ const Login = ({ history }) => {
           placeholder="Password"
         />
       </FormField>
-      <p style={{ visibility: error ? "visible" : "hidden" }}>Please try again</p>
+      <p style={{ visibility: error ? "visible" : "hidden" }}>
+        Please try again
+      </p>
       <Box direction="row">
         <Link to="/signup">
-          <Button
-            // primary
-            type="submit"
-            size="medium"
-            label="Register"
-            margin="small"
-            // onClick={handleLogin}
-          />
+          <Button type="submit" size="medium" label="Register" margin="small" />
         </Link>
         <Button
-          // primary
           type="submit"
           size="medium"
           label="Login"
@@ -124,16 +107,13 @@ const Login = ({ history }) => {
       </Box>
       <Link to="/signup">
         <Button
-          // primary
           type="submit"
           size="medium"
           label="Proceed as guest"
           margin="small"
-          // onClick={handleLogin}
         />
       </Link>
       <LinkText>Forgot your password?</LinkText>
-      {/* </Form> */}
     </Wrapper>
   );
 };

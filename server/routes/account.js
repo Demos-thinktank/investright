@@ -4,12 +4,7 @@ const router = express.Router();
 const auth = require("../middleware/auth");
 
 router.get("/profile", auth, async (req, res) => {
-  // View logged in user profile
-  //   let test = {
-  //     user: req.user,
-  //     mykey: "value",
-  //   };
-  console.log("req.user endpount");
+  // console.log("req.user endpount");
   // decide on values to send
   res.send(req.user);
 });

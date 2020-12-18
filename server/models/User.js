@@ -36,14 +36,6 @@ const UserSchema = new mongoose.Schema({
   ],
 });
 
-// UserSchema.methods.generateHash = function (password) {
-//   return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-// };
-
-// UserSchema.methods.validPassword = function (password) {
-//   return bcrypt.compareSync(password, this.password);
-// };
-
 UserSchema.pre("save", async function (next) {
   // hash password before saving the user model
   const user = this;

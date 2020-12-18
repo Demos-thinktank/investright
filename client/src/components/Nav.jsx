@@ -17,10 +17,7 @@ const StyledTitle = styled(Link)`
 `;
 
 const StyledLink = styled(Link)`
-  /* font-size: 2rem; */
-  /* font-weight: 400; */
   padding: 0 0.5rem;
-  /* z-index: 30; */
   color: whitesmoke !important;
   &:hover {
     color: #ee7155 !important;
@@ -44,18 +41,8 @@ const Navigation = () => {
               <Menu
                 plain
                 style={{ top: 0 }}
-                // size="large"
-                // label=""
-                // icon={<MenuIcon />}
                 background="#15343a"
-                // dropTarget='{Header}'
                 dropBackground="#15343a"
-                // dropProps={{
-                //   align: { top: "top", left: "left" },
-                //   elevation: "xlarge",
-                //   background: "dark-1",
-                //   top: 0,
-                // }}
                 items={[
                   {
                     label: "About us",
@@ -103,24 +90,18 @@ const Navigation = () => {
                   },
                 ]}
               >
-                {/* <Box direction="row" gap="small" pad="medium">
-                <MenuIcon />
-              </Box> */}
                 {({ drop, hover }) => {
-                  // const color = hover && !drop ? "accent-3" : undefined;
                   return (
                     <Box
                       direction="row"
                       justify="end"
                       gap="small"
-                      // pad="medium"
                       background={hover && drop ? "#15343a" : undefined}
                       style={{
                         padding: drop ? "0 20px" : "",
                         backgroundColor: "#15343a",
                         color: "#ee7155 !important",
                       }}
-                      
                     >
                       {drop ? <Close /> : <MenuIcon />}
                     </Box>
@@ -137,7 +118,14 @@ const Navigation = () => {
                 <StyledLink to="#">Contact us</StyledLink>
                 <StyledLink to="/my-actions">My actions</StyledLink>
                 <StyledLink to="#">Profile</StyledLink>
-                <StyledLink to="#">Logout</StyledLink>
+                <StyledLink
+                  to="#"
+                  onClick={() => {
+                    setShow(true);
+                  }}
+                >
+                  Logout
+                </StyledLink>
               </Nav>
               {show && <Logout show={show} setShow={setShow} />}
             </>

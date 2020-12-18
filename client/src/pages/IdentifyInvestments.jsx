@@ -5,6 +5,7 @@ import PageHeading from "../components/PageHeading";
 import { AuthContext } from "../store/AuthProvider";
 import { Box, Button, Text, TextArea } from "grommet";
 import { Mail } from "grommet-icons";
+import Loading from "../components/Loading";
 
 const IdentifyingInvestments = () => {
   const [value, setValue] = React.useState(
@@ -13,9 +14,17 @@ const IdentifyingInvestments = () => {
 
   const history = useHistory();
 
-  const { auth } = useContext(AuthContext);
+  const { isLoggedIn, isLoading, isNotAuthenticated } = useContext(AuthContext);
 
-  if (!auth.loading && auth.isAuthenticated) {
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (isNotAuthenticated) {
+    return <Redirect to="/" />;
+  }
+
+  if (isLoggedIn) {
     return (
       <Layout>
         <PageHeading
@@ -31,13 +40,14 @@ const IdentifyingInvestments = () => {
             fill={true}
           />
         </Box>
-        <Button margin={{ top: 'medium', right: 'auto'}} 
-        label="Open in email app" 
-        disabled 
-        icon={<Mail />}
-        reverse={true}
-        />        
-        <Text margin={{ vertical: 'medium' }}>
+        <Button
+          margin={{ top: "medium", right: "auto" }}
+          label="Open in email app"
+          disabled
+          icon={<Mail />}
+          reverse={true}
+        />
+        <Text margin={{ vertical: "medium" }}>
           If you don't have a financial advisor or stockbroker, and cannot tell
           us which funds you have invested in, we will unfortunately be unable
           to calculate the performance of these funds. A list of financial
@@ -51,28 +61,9 @@ const IdentifyingInvestments = () => {
           secondary
           label="Take me to my funds page"
           onClick={() => history.push("/profile")}
-          margin={{right: 'auto'}}
+          margin={{ right: "auto" }}
         />
       </Layout>
-    );
-  }
-
-  if (!auth.loading && !auth.isAuthenticated) {
-    return <Redirect to="/" />;
-  }
-
-  if (auth.loading) {
-    return (
-      <div
-        style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <h1>Loading...</h1>
-      </div>
     );
   }
 };

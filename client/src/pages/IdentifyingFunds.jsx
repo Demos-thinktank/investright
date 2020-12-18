@@ -4,7 +4,8 @@ import Layout from "../components/Layout";
 import PageHeading from "../components/PageHeading";
 import { AuthContext } from "../store/AuthProvider";
 import { Box, Button, TextArea } from "grommet";
-import { Mail } from 'grommet-icons'
+import { Mail } from "grommet-icons";
+import Loading from "../components/Loading";
 
 const IdentifyingFunds = () => {
   const [value, setValue] = React.useState(
@@ -13,9 +14,17 @@ const IdentifyingFunds = () => {
 
   const history = useHistory();
 
-  const { auth } = useContext(AuthContext);
+  const { isLoggedIn, isLoading, isNotAuthenticated } = useContext(AuthContext);
 
-  if (!auth.loading && auth.isAuthenticated) {
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (isNotAuthenticated) {
+    return <Redirect to="/" />;
+  }
+
+  if (isLoggedIn) {
     return (
       <Layout>
         <PageHeading
@@ -32,38 +41,20 @@ const IdentifyingFunds = () => {
             fill={true}
           />
         </Box>
-        <Button margin={{vertical: 'medium', right: 'auto'}} 
-        label="Open in email app" 
-        disabled 
-        icon={<Mail />}
-        reverse={true}
+        <Button
+          margin={{ vertical: "medium", right: "auto" }}
+          label="Open in email app"
+          disabled
+          icon={<Mail />}
+          reverse={true}
         />
         <Button
           secondary
           label="Take me to my funds page"
           onClick={() => history.push("/profile")}
-          margin={{right: 'auto'}}
+          margin={{ right: "auto" }}
         />
       </Layout>
-    );
-  }
-
-  if (!auth.loading && !auth.isAuthenticated) {
-    return <Redirect to="/" />;
-  }
-
-  if (auth.loading) {
-    return (
-      <div
-        style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <h1>Loading...</h1>
-      </div>
     );
   }
 };

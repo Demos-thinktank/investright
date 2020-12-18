@@ -1,12 +1,10 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
-import { Collapsible, Box, Button, Text, Tip } from "grommet";
+import { Box, Button, Tip } from "grommet";
 import { HelpOption } from "grommet-icons";
 import styled from "styled-components";
 
 const FundButton = ({ label, href, iconText }) => {
-  const [open, setOpen] = useState(false);
-
   const history = useHistory();
 
   const FundButton = styled(Button)`
@@ -24,16 +22,7 @@ const FundButton = ({ label, href, iconText }) => {
           label={label}
           onClick={() => history.push(href)}
           reverse={true}
-          // hoverIndicator={}
-          // color="dark-1"
         />
-        {/* <Button
-          alignSelf="end"
-          plain
-          onClick={() => setOpen(!open)}
-          icon={<HelpOption color="#1d3336" />}
-          reverse={true}
-        /> */}
         {iconText && (
           <Tip
             plain
@@ -47,11 +36,11 @@ const FundButton = ({ label, href, iconText }) => {
                   color: "demosDark",
                   dark: true,
                 }}
-                border= {{
-                  "color": "demosDark",
-                  "size": "medium",
-                  "style": "dashed",
-                  "side": "all"
+                border={{
+                  color: "demosDark",
+                  size: "medium",
+                  style: "dashed",
+                  side: "all",
                 }}
               >
                 {iconText}
@@ -62,11 +51,6 @@ const FundButton = ({ label, href, iconText }) => {
           </Tip>
         )}
       </Box>
-      {/* <Collapsible open={open}>
-        <Box background="light-2" round="medium" pad="medium" justify="center">
-          <Text size="small">{iconText}</Text>
-        </Box>
-      </Collapsible> */}
     </Box>
   );
 };

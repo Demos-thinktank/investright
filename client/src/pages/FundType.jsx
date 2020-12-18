@@ -6,9 +6,10 @@ import CurrentEmployer from "../components/FundTypes/CurrentEmployer";
 import OtherInvestment from "../components/FundTypes/OtherInvestment";
 import OtherPension from "../components/FundTypes/OtherPension";
 import Layout from "../components/Layout";
+import Loading from "../components/Loading";
 
 const FundType = () => {
-  const { auth } = useContext(AuthContext);
+  const { isLoggedIn, isLoading, isNotAuthenticated } = useContext(AuthContext);
   let { type } = useParams();
 
   let fundType = {
@@ -17,27 +18,16 @@ const FundType = () => {
     "other-investment": <OtherInvestment />,
   };
 
-  if (!auth.loading && auth.isAuthenticated) {
-    return <Layout>{fundType[type]}</Layout>;
+  if (isLoading) {
+    return <Loading />;
   }
 
-  if (!auth.loading && !auth.isAuthenticated) {
+  if (isNotAuthenticated) {
     return <Redirect to="/" />;
   }
 
-  if (auth.loading) {
-    return (
-      <div
-        style={{
-          height: "100vh",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <h1>Loading...</h1>
-      </div>
-    );
+  if (isLoggedIn) {
+    return <Layout>{fundType[type]}</Layout>;
   }
 };
 

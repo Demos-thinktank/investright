@@ -11,7 +11,12 @@ function AuthProvider({ children }) {
     token: null,
     loading: true,
   });
-  const authData = { auth, setAuth };
+
+  const isLoggedIn = !auth.loading && auth.isAuthenticated;
+  const isLoading = auth.loading;
+  const isNotAuthenticated = !auth.loading && !auth.isAuthenticated;
+
+  const authData = { auth, setAuth, isLoggedIn, isLoading, isNotAuthenticated };
 
   useEffect(() => {
     // app local storage naming convention for Investright key?

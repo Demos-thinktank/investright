@@ -11,35 +11,28 @@ const StyledLayer = styled(Layer)`
 `;
 
 const StyledButton = styled(Button)`
-  /* padding: 0.2rem 0.5rem; */
   width: max-content;
 `;
 
-const Logout = ({ setShow, history }) => {
-  //   const history = useHistory();
-
+const Logout = ({ setShow }) => {
   async function handleLogout(e) {
     e.preventDefault();
-    // console.log(e);
     const localStorageToken = await getFromStorage("Investright");
     const config = {
       headers: { Authorization: `Bearer ${localStorageToken}` },
     };
-    // console.log("config", config);
     axios
       .post("/api/account/logout", {}, config)
       .then((res) => {
         console.log(res.data);
       })
       .then(() => removeFromStorage("Investright"))
-      //   .then(() => history.push("/"))
       .then(() => window.location.reload())
       .catch(console.log);
   }
 
   return (
     <>
-      {/* {show && ( */}
       <StyledLayer animation="fadeIn" full={true} position="center">
         <Box
           align="center"
@@ -67,17 +60,13 @@ const Logout = ({ setShow, history }) => {
             <StyledButton primary label="Yes I'm sure" onClick={handleLogout} />
             <StyledButton alert label="Cancel" onClick={() => setShow(false)} />
           </Box>
-          {/* <br /> */}
           <StyledButton
             fill="horizontal"
             disabled
             label="Logout from all devices"
-            //   onClick={() => setShow(false)}
           />
         </Box>
       </StyledLayer>
-      {/* {loggedOut && <Redirect to="/" />} */}
-      {/* // )} */}
     </>
   );
 };
