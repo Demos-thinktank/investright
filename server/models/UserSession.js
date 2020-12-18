@@ -1,3 +1,5 @@
+// We are not using this file
+
 const mongoose = require("mongoose");
 
 // Using method of storing user sessions in the database, now using local storage
