@@ -1,6 +1,6 @@
-# not-perspectives-integration but Investright
+# Investright
 
-Not even slightly anything to do with Google's Perspectives API
+IN DEVELOPMENT
 
 ### To Run Locally
 
