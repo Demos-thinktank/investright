@@ -27,10 +27,11 @@ const Login = ({ history }) => {
   const [error, setError] = useState(false);
 
   const { auth, setAuth } = useContext(AuthContext);
-
-  useEffect(() => {
-    console.log(login, auth);
-  }, [login, auth]);
+  
+  // Note - removed by JS to debug setup
+  //useEffect(() => {
+  //  console.log(login, auth);
+  //}, [login, auth]);
 
   function handleLoginChange(e) {
     setError(false);
@@ -58,13 +59,13 @@ const Login = ({ history }) => {
       })
       .catch(() => setError(true));
   }
-
-  useEffect(() => {
-    const storage = localStorage.getItem("Investright");
-    if (storage) {
-      history.push("/profile");
-    }
-  });
+  // Note - temporarily removed by JS to debug setup
+  //useEffect(() => {
+  //  const storage = localStorage.getItem("Investright");
+  //  if (storage) {
+  //    history.push("/profile");
+  //  }
+  //});
 
   return (
     <Wrapper>

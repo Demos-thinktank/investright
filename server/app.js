@@ -12,6 +12,7 @@ const app = express();
 mongoose.Promise = global.Promise;
 
 const uri = process.env.MONGO_URI;
+
 mongoose.connect(uri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
